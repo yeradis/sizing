@@ -21,7 +21,7 @@ def serve_image(img_source_url,new_width,quality):
 	img_io = StringIO()
 	img.save(img_io,"%s"%(format),quality=quality)
 	img_io.seek(0)
-	return send_file(img_io,mimetype='IMAGE/%s'%(format),cache_timeout=3600,as_attachment=False)
+	return send_file(img_io,mimetype='IMAGE/%s'%(format),as_attachment=False)
 
 @app.route('/sizing/<int:quality>/<int:width>/<path:url>')
 def sizing(quality,width,url):
