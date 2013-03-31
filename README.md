@@ -7,7 +7,9 @@ And running with a simple cache, because we do not want to waste resources, righ
 Right now there are only three required params:
 
 **Quality** : An **Integer value** that specify the new image quality (does not make magic , no good quality from a bad source)
+
 **Width** : An **Integer value** that specify the new image width, keeping the scale proportions
+
 **Path** : An **URL** that points to the original image url in hight resolution ?
 
 When you run the app, you need to call in this way:
