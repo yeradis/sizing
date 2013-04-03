@@ -39,5 +39,13 @@ Using the sizing stuff:
 	  alt='My new resized image'
 	/>
 
+If the Cheeseshop (**secret code name** for Python Package Index also known as PyPI) is down, you can also install from one of the mirrors. 
+Crate.io is one of them:
+
+	pip install -i http://simple.crate.io/ Flask
+	pip install -i http://simple.crate.io/ requests
+	pip install -i http://simple.crate.io/ Pillow 
+	pip install -i http://simple.crate.io/ Flask-Cache
+
 
 Pd: i do not need to mention that you can use a simple javascript to dynamically change the width param in the url based on your screen size right ?
