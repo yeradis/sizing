@@ -45,28 +45,10 @@ def serve_image(img_source_url,new_width,quality):
 	
 	return send_file(img_io,mimetype='IMAGE/%s'%(format),as_attachment=False)
 
-def fit_image(img_source_url,new_width,quality):
-	img = Image.open(StringIO(requests.get(img_source_url).content))
-	format = img.format
-	percent = (new_width/float(img.size[0]))
-	new_height = int((float(img.size[1])*float(percent)))
-	img = ImageOps.fit(img, (new_width, new_height), Image.ANTIALIAS)
-	img_io = StringIO()
-	img.save(img_io,"%s"%(format),quality=quality)
-	img_io.seek(0)
-	return send_file(img_io,mimetype='IMAGE/%s'%(format),as_attachment=False)
-
 @app.route('/sizing/<int:quality>/<int:width>/<path:url>', defaults={'quality':100})
 @app.route('/sizing/<int:quality>/<int:width>/<path:url>')
 def sizing(quality,width,url):
 	return serve_image(url,width,quality)
 	
-@app.route('/sizing/fit/<int:quality>/<int:width>/<path:url>')
-def sizing_fit(quality,width,url):
-        try:
-                return fit_image(url,width,quality)
-        except:
-                return "<h1>500 - Internal Server Error</h1>", 500
-
 if __name__ == '__main__':
     app.run(threaded=True, debug=True,host='0.0.0.0', port=5002)
